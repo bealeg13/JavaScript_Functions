@@ -63,20 +63,59 @@ console.log("EXERCISE 3:\n==========\n");
 // Exercise 4 Section
 console.log("EXERCISE 4:\n==========\n");
 
-function typeOfTriangle(a, b, c){
-    if (a + b > c && b + c > a && c + a > b ){
-        if (a == b && b == c && c == a){
-            console.log("Triangle type: Equilateral")
-        }
-        else if (a == b || b == c || c == a){
-            console.log("Triangle type: Isosceles")
-        }
-        else if (a != b && b != c && c != a ){
-            console.log("Triangle type: Scalene")
-        }
-    }
-    else {
-        console.log("Invalid Triangle")
-    }
+// function typeOfTriangle(a, b, c){
+//     if (a + b > c && b + c > a && c + a > b ){
+//         if (a == b && b == c && c == a){
+//             console.log("Triangle type: Equilateral")
+//         }
+//         else if (a == b || b == c || c == a){
+//             console.log("Triangle type: Isosceles")
+//         }
+//         else if (a != b && b != c && c != a ){
+//             console.log("Triangle type: Scalene")
+//         }
+//     }
+//     else {
+//         console.log("Invalid Triangle")
+//     }
+// }
+// typeOfTriangle(3, 3, 4);
+
+// Exercise 5 Bonus
+console.log("EXERCISE 5:\n==========\n");
+
+function phoneDataUsage(planLimit, day, usage){
+    const averageDailyUsage = usage / day;
+
+  
+  const remainingDays = 30 - day;
+
+  
+  const maxDailyUsageToStayWithinPlan = (planLimit - usage) / remainingDays;
+
+  let feedback = "";
+  if (averageDailyUsage > maxDailyUsageToStayWithinPlan) {
+    feedback = "You are EXCEEDING your average daily use";
+  } else if (averageDailyUsage < maxDailyUsageToStayWithinPlan) {
+    feedback = "You can afford to use more data";
+  } else {
+    feedback = "You are right on track with your average daily use";
+  }
+
+
+  const excessUsage = (averageDailyUsage - maxDailyUsageToStayWithinPlan) * remainingDays;
+
+  const message = `${day} days used, ${remainingDays} days remaining
+Average daily use: ${averageDailyUsage.toFixed(3)} GB/day
+${feedback} (${maxDailyUsageToStayWithinPlan.toFixed(2)} GB/day),
+continuing this high usage, you'll exceed your data plan by
+${excessUsage.toFixed(1)} GB.
+To stay below your data plan, use no more than ${maxDailyUsageToStayWithinPlan.toFixed(2)} GB/day.`;
+
+  
+  console.log(message);
+
+
 }
-typeOfTriangle(3, 3, 4);
+
+phoneDataUsage(56, 13, 10)
